@@ -1,19 +1,47 @@
 var express = require('express');
 var router = express.Router();
+const mongoose = require('mongoose');
+const WeatherModel = require('../models/weatherdata');
 
-/* SET weater data. */
+var mongoDB = 'mongodb://127.0.0.1/my_database';
+
+/* GET ALL weater data. */
 router.get('/', function(req, res, next) {
-  res.send('Weahter information should be here');
+    try{
+        const weatherdata = WeatherModel.find({}, function(err, weatherdata) {
+            if (err) return console.error(err);
+            res.json(weatherdata);
+        });
+    }
+
+    catch (error) {
+        console.error(error);
+    }
 });
 
+
+
+
+/* POST weater data. */
 router.post('/submit', function(req, res, next) {
-    var weatherData = {
-        "mac": req.body.mac,
-        "temp": req.body.temp,
-        "hum": req.body.hum,
+    const weatherModel = new WeatherModel({
+        mac: req.body.mac,
+        temp: req.body.temp,
+        hum: req.body.hum,
+        logTimeStamp: new Date()
+    });
+    // Save weather data to database
+    try {
+        weatherModel.save();        
+        res.send("Success");
+    } catch (err) {
+        res.send(err);
     }
-    console.log(weatherData);
-    res.send('Data submitted for mac: ' + weatherData.mac);
 });
+
+
+
+
+
 
 module.exports = router;

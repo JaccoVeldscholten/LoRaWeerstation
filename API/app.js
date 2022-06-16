@@ -1,22 +1,28 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+var createError = require('http-errors');     // https://www.npmjs.com/package/http-errors
+var express = require('express');             // Express web server framework
+var path = require('path');                   // path module        
+var cookieParser = require('cookie-parser');  // Parse cookies (needed for auth)
+var logger = require('morgan');               // Logger
+require("dotenv").config();                   // Load .env file
+const mongoose = require("mongoose");         // MongoDB  (https://www.npmjs.com/package/mongoose)
 
-var indexRouter = require('./routes/index');
+require("./private/database").connect();       // Connect to database
+
+var indexRouter = require('./routes/index');    
 var usersRouter = require('./routes/users');
 var weaterRouter = require('./routes/weaterdata');
 
-var app = express();
+const User = require("./models/user");
+
+var app = express();    //  Create Express app
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('views', path.join(__dirname, 'views'));  //  Set views directory
+app.set('view engine', 'jade');                   //  Set view engine to Jade
 
-app.use(logger('dev'));
+app.use(logger('dev'));                           //  Log requests to console
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false })); // Parse URL-encoded bodies (needed for auth)
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
