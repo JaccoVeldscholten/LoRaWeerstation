@@ -49,8 +49,6 @@ extern "C" {
 
 /* USER CODE END EM */
 
-void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
-
 /* Exported functions prototypes ---------------------------------------------*/
 void Error_Handler(void);
 
@@ -59,42 +57,8 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define BATTERY_VOLTAGE_Pin GPIO_PIN_0
-#define BATTERY_VOLTAGE_GPIO_Port GPIOA
-#define SENSE_CSS_Pin GPIO_PIN_1
-#define SENSE_CSS_GPIO_Port GPIOA
-#define DIO0_Pin GPIO_PIN_2
-#define DIO0_GPIO_Port GPIOA
-#define POWER_ENABLE_Pin GPIO_PIN_3
-#define POWER_ENABLE_GPIO_Port GPIOA
-#define WATER_METER_Pin GPIO_PIN_4
-#define WATER_METER_GPIO_Port GPIOA
-#define ANEMOMETER_Pin GPIO_PIN_5
-#define ANEMOMETER_GPIO_Port GPIOA
-#define WIND_VANE_Pin GPIO_PIN_6
-#define WIND_VANE_GPIO_Port GPIOA
-#define SOLAR_VOLTAGE_Pin GPIO_PIN_0
-#define SOLAR_VOLTAGE_GPIO_Port GPIOB
-#define ADC_IN9_Pin GPIO_PIN_1
-#define ADC_IN9_GPIO_Port GPIOB
-#define CUSTOM_03_Pin GPIO_PIN_12
-#define CUSTOM_03_GPIO_Port GPIOB
-#define CUSTOM_02_Pin GPIO_PIN_13
-#define CUSTOM_02_GPIO_Port GPIOB
-#define DIO5_Pin GPIO_PIN_14
-#define DIO5_GPIO_Port GPIOB
-#define CUSTOM_00_Pin GPIO_PIN_15
-#define CUSTOM_00_GPIO_Port GPIOB
-#define BME280_CS_Pin GPIO_PIN_10
-#define BME280_CS_GPIO_Port GPIOA
 #define DEBUG_LED_Pin GPIO_PIN_12
 #define DEBUG_LED_GPIO_Port GPIOA
-#define TIM22_CH1_Pin GPIO_PIN_4
-#define TIM22_CH1_GPIO_Port GPIOB
-#define INT_CSS_Pin GPIO_PIN_5
-#define INT_CSS_GPIO_Port GPIOB
-#define RESET_CSS_Pin GPIO_PIN_8
-#define RESET_CSS_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
